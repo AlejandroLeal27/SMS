@@ -23,7 +23,7 @@ namespace SMS.Controllers
             var message = MessageResource.Create(
                 body: $"{sms.Body}",
                 from: new Twilio.Types.PhoneNumber("+14344426627"),
-                to: new Twilio.Types.PhoneNumber("+528993603776")
+                to: new Twilio.Types.PhoneNumber($"{sms.Phone}")
             );
 
             Console.WriteLine(message.Sid);
