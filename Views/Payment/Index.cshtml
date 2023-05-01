@@ -1,0 +1,51 @@
+﻿@model SMS.Models.PagoModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+<h4>PagoModel</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Charge">
+                <article>
+                    <label>Cantidad: $10.00</label>
+                </article>
+                <script src="//checkout.stripe.com/v2/checkout.js?id=price_1N2oZzJjTkiFWgEAfON64Kh4"
+                class="stripe-button"
+                data-key="@ViewBag.StripePublishKey"
+                data-locale="auto"
+                data-description="TEST"
+                data-amount="1000">
+            </script>
+        </form>
+    </div>
+</div>
+
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1N2ogaJjTkiFWgEAlIdnFf5T"
+publishable-key="pk_test_51N0V4tJjTkiFWgEAtmFsNHXwx0INFclDzlVwqnUvfAJyfOy9uRWUtNMiUPW6X4C27UL3RJupToINQ0HwdFbkn5bB00tLGpKM0X">
+</stripe-pricing-table>
+
+
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
